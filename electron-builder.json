@@ -1,0 +1,35 @@
+{
+	"productName": "vue-webpack-electron",
+	"copyright": "xx",
+	"compression": "maximum",
+	"directories": {
+		"output": "release"
+	},
+	"publish": [
+		{
+			"provider": "generic",
+			"url": ""
+		}
+	],
+	"nsis": {
+		"oneClick": false,
+		"allowElevation": true,
+		"allowToChangeInstallationDirectory": true,
+		"installerIcon": "",
+		"uninstallerIcon": "",
+		"installerHeaderIcon": "",
+		"createDesktopShortcut": true,
+		"createStartMenuShortcut": true
+	},
+	"mac": {
+		"icon": "",
+		"target": ["dmg"]
+	},
+	"win": {
+		"icon": "",
+		"target": {
+			"target": "nsis",
+			"arch": ["ia32", "x64"]
+		}
+	}
+}
