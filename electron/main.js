@@ -1,5 +1,6 @@
 const { join } = require('node:path');
-const { app, BrowserWindow } = require('electron');
+const { readFileSync } = require('node:fs');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 
 const createWindow = () => {
 	const win = new BrowserWindow({
@@ -18,6 +19,14 @@ const createWindow = () => {
 };
 
 app.whenReady().then(() => {
+	ipcMain.handle('dialog:openFile', async () => {
+		const { canceled, filePaths } = await dialog.showOpenDialog();
+		if (!canceled) {
+			const readFileInfo = readFileSync(filePaths[0], 'utf-8');
+			return readFileInfo;
+		}
+	});
+
 	createWindow();
 
 	app.on('activate', () => {

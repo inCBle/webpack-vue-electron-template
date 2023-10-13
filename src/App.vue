@@ -1,9 +1,3 @@
-<!--
- * @Date: 2023-10-12 18:48:40
- * @LastEditors: 吴迪
- * @LastEditTime: 2023-10-13 02:59:15
- * @FilePath: \vue-webpack-electron-￥？？\src\App.vue
--->
 <template>
 	<div class="container">
 		<h1>
@@ -16,7 +10,9 @@
 		<main class="view">
 			<router-view></router-view>
 		</main>
-		<footer></footer>
+		<footer>
+			<button @click="gitInfo">获取用户详情</button>
+		</footer>
 	</div>
 </template>
 
@@ -27,6 +23,13 @@
 			return {
 				version: null,
 			};
+		},
+		methods: {
+			gitInfo() {
+				window.appApi.openFile().then((fileInfo) => {
+					console.log(fileInfo);
+				});
+			},
 		},
 		created() {
 			this.version = window.appApi?.getElectronVersions();

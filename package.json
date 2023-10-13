@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "webpack-dev-server -c build/webpack.dev.js",
 		"build": "webpack -c build/webpack.prod.js",
-		"electron:dev": "cross-env NODE_ENV=app  npm run build && electron .",
+		"electron:dev": "chcp 65001 && cross-env NODE_ENV=app  npm run build && electron .",
 		"electron:build": "cross-env NODE_ENV=app npm run build && electron-builder"
 	},
 	"keywords": [],
